@@ -1,4 +1,5 @@
-import Image from "next/image";
+import Image from 'next/image';
+import { abc } from './temp';
 
 export default function Home() {
   return (
@@ -9,12 +10,13 @@ export default function Home() {
           src="https://nextjs.org/icons/next.svg"
           alt="Next.js logo"
           width={180}
+          s
           height={38}
           priority
         />
         <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <li className="mb-2">
-            Get started by editing{" "}
+            Get started by editing{' '}
             <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
               src/app/page.js
             </code>
