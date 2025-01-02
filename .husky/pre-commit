@@ -1,0 +1,8 @@
+# Kill any running yarn dev processes as we have to run dev environment again
+pkill -f "yarn dev" || true
+
+# Run linting
+yarn lint
+
+# Run build
+yarn build
