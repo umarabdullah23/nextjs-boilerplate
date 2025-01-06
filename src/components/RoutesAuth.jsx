@@ -3,13 +3,12 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { PRIVATE_ROUTES, PUBLIC_ROUTES, ROUTES } from '@/constants/routes';
 import { useEffect } from 'react';
-import { useRecoilValue } from 'recoil';
-import { authState } from '@/atoms/auth';
+import { useAuthStore } from '@/store/auth';
 
 export default function RoutesAuth() {
   const router = useRouter();
   const path = usePathname();
-  const isAuthenticated = useRecoilValue(authState);
+  const { isAuthenticated } = useAuthStore();
 
   useEffect(() => {
     if (!isAuthenticated && PRIVATE_ROUTES.includes(path))

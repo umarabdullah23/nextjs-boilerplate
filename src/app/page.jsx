@@ -4,13 +4,20 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
 import Link from 'next/link';
-import { useRecoilState } from 'recoil';
-import { authState } from '@/atoms/auth';
+import { useAuthStore } from '@/store/auth';
 import { useIsClient } from '@/hooks/useIsClient';
 
 export default function Home() {
   const isClient = useIsClient();
-  const [isAuthenticated, setIsAuthenticated] = useRecoilState(authState);
+  const { isAuthenticated, login, logout } = useAuthStore();
+
+  const handleAuthChange = (checked) => {
+    if (checked) {
+      login();
+    } else {
+      logout();
+    }
+  };
 
   return (
     <Card className="m-5 max-w-[50%] mx-auto">
@@ -23,7 +30,7 @@ export default function Home() {
             <Switch
               id="auth-mode"
               checked={isAuthenticated}
-              onCheckedChange={setIsAuthenticated}
+              onCheckedChange={handleAuthChange}
             />
             <label htmlFor="auth-mode">
               {isAuthenticated ? 'Authenticated' : 'Not Authenticated'}
