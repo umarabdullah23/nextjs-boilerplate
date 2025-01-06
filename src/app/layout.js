@@ -2,7 +2,6 @@ import localFont from 'next/font/local';
 import './globals.css';
 import RoutesAuth from '@/components/RoutesAuth';
 import ReactQueryProvider from '@/components/ReactQueryProvider';
-import RecoilProvider from '@/components/RecoilProvider';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -28,10 +27,8 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ReactQueryProvider>
-          <RecoilProvider>
-            <RoutesAuth />
-            {children}
-          </RecoilProvider>
+          <RoutesAuth />
+          {children}
         </ReactQueryProvider>
       </body>
     </html>
